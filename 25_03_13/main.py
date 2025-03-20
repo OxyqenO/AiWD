@@ -1,4 +1,5 @@
 import numpy as np
+
 def przyklad1():
     b = np.arange(12).reshape(3,4)
 
