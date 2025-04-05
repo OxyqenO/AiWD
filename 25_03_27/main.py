@@ -10,7 +10,7 @@ print(df, '\n\n')
 data = df.groupby('Rok')['Liczba'].sum()
 
 data = data / 1000
-#print(data)
+print(data)
 #data.plot(title='Liczba narodzin w każdym roku', figsize=(8,6), grid=True, ylabel='Liczba narodziny [tys.]', xlabel='Rok', rot=45, xticks=data.index)
 #plt.show()
 
@@ -22,6 +22,6 @@ data = data / 1000
 
 #zadanie 3
 
-data3 = df.groupby('Plec')['Liczba'].sum()
-data3.plot.pie(title='Płeć',subplots=True, autopct='%.2f %%')
-plt.show()
+#data3 = df.groupby('Plec')['Liczba'].sum()
+#data3.plot.pie(title='Płeć',subplots=True, autopct='%.2f %%')
+#plt.show()
