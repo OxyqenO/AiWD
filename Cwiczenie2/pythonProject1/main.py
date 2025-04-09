@@ -63,8 +63,16 @@ print(a9.reshape(3,27))
 print(a9.reshape(1,81))
 
 #zadanie 11
-
-
+# Wygeneruj macierz płaską (wektor) i przekształć
+# ją na macierz 3x4. Wygeneruj w ten sposób jeszcze kombinacje 4x3 i 2x6.
+# Spłaszcz każdą z nich i wyświetl wyniki. Czy są identyczne?
+a11 = np.array([1,2,3,4,5,6,7,8,9,10,11,12])
+print(a11.reshape(3,4))
+print(np.ndarray.flatten(a11))
+print(a11.reshape(4,3))
+print(np.ndarray.flatten(a11))
+print(a11.reshape(2,6))
+print(np.ndarray.flatten(a11))
 
 
 
