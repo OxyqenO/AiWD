@@ -1,3 +1,5 @@
+from traceback import print_tb
+
 import numpy as np
 import pandas as pd
 
@@ -61,3 +63,9 @@ print('c)\n',c1,'\n\n')
 #d)
 d1 = df1.groupby('Kraj')['idZamowienia'].count()
 print('d)\n',d1,'\n\n')
+
+test = np.array([1,2,3,4,5,6])
+test.transpose()
+print(test)
+np.flip(test)
+print(test)
