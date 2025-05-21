@@ -87,10 +87,78 @@ print(df.head())
 #     zmień nazwy wartości kolumny "Legendary" z "False"/"True" na "Zwykły"/"Legendarny"
 #     wyświetl wartości procentowe na wykresie kołowym stosując parametr autopct
 #     nadaj wykresowi tytuł (możesz użyć matplotlib)
-df['Legendary'] = df.apply(lambda x: 'Zwykly' if x['Legendary'] == False else 'Legendarny', axis = 1)
-print(df.head())
 
-x = df.groupby('Legendary')['Legendary'].count()
-plt.title('')
-plt.pie(x, autopct='%1.1f%%', labels=x.index, colors=['#ffb482', '#a1c9f4'])
+# df['Legendary'] = df.apply(lambda x: 'Zwykly' if x['Legendary'] == False else 'Legendarny', axis = 1)
+# print(df.head())
+#
+# x = df.groupby('Legendary')['Legendary'].count()
+# plt.title('')
+# plt.pie(x, autopct='%1.1f%%', labels=x.index, colors=['#ffb482', '#a1c9f4'])
+# plt.show()
+
+#-----------------------------------------------------------------------------------------------------------
+
+#zad 4
+
+# Wykres pudełkowy przedstawia rozkład wartości danych dla każdej grupy.
+# Pozioma kreska na środku pudełka oznacza medianę, z kolei równoległe do mediany boki
+# oznaczają kwartyle - dolny, czyli pierwszy kwartyl oraz górny czyli trzeci kwartyl.
+#
+# (czym jest kwartyl -> https://pl.wikipedia.org/wiki/Kwartyl)
+#
+# Wąsy poza boksami przedstawiają dolną i górną granicę danych.
+# Pojedyncze punkty poza wąsami przedstawiają wartości odstające (outliers)
+#
+# Zadanie: Przedstaw statystyki pokemonów w postaci wykresu pudełkowego sns.boxplot().
+# Wykorzystaj kolumnę HP, Attack oraz Defence (pamiętaj: do wyciągnięcia kolumn możesz
+# użyć m.in. funkcji .loc lub .iloc)
+#
+#     dodaj tytuł, opisz oś y - możesz skorzystać z biblioteki matplotlib
+#     zmień nazwy kolumn, aby oś x wyświetlała się jak na przedstawionym wykresie
+#     (podobnie jak w poprzednim wykresie, możesz skorzystać z .set_axis())
+
+# df.head()
+#
+x = df[['HP','Attack','Defense']]
+#
+# plt.figure(figsize = (10,6))
+sns.boxplot(data=x)
+#
+# plt.title('Podstawowe statystyki Pokemonów')
+# plt.xlabel('Statystyki')
+# plt.ylabel('Wartości')
+#
+# plt.xticks(ticks=[0,1,2], labels=['HP', 'Atak', 'Obrona'])
+plt.show()
+
+#-----------------------------------------------------------------------------------------------------------
+
+#zad 4
+
+# Wykres przedstawiający główną zależność dwóch zmiennych (x i y)
+# oraz zależność opisującą główny wykres. W poniższym przykładzie, wykresem opisującym wykres
+# punktowy jest wykres gęstości.
+#
+# https://seaborn.pydata.org/generated/seaborn.jointplot.html
+#
+# Przedstaw zależność wartości ataku (Attack) od obrony (Defense) przy
+# rozróżnieniu pokemonów na legendarne i zwykłe (kolumna Legendary) używając funkcji sns.jointplot()
+
+sns.jointplot(data=df, x='Attack', y='Defense', hue='Legendary')
+plt.show()
+
+#-----------------------------------------------------------------------------------------------------------
+
+#zad 5
+# Wykres przedstawiający macierz korelacji - wskazuje na korelację dla odpowiednich par zmiennych losowych. Dla tej samej pary (Attack-Attack, Defense-Defense ...) przedstawione są histogramy, czyli częstości występowania danej cechy (na osi x widać wartości cechy, na y częstość występowania). Wykresy punktowe standardowo przedstawiają zależność jednej cechy od drugiej.
+#
+# https://seaborn.pydata.org/generated/seaborn.pairplot.html
+#
+# Stwórz macierz korelacji dla Ataku, Obrony i Szybkości pokemonów:
+#
+#     wyciągnij odpowiednie kolumny przy pomocy funkcji .loc()
+#     zwizualizuj wyżej wymienione statystyki przy pomocy sns.pairplot()
+
+x = df[['Attack', 'Defense', 'Speed']]
+sns.pairplot(data=x)
 plt.show()
