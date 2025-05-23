@@ -9,13 +9,12 @@ from matplotlib.pyplot import tight_layout
 #1. Załaduj plik CSV jako Data Frame i wyświetl jego 4 pierwsze wiersze. Pamiętaj, przy wczytaniu zbioru Pokemon.csv parametr encoding należy ustawić na wartość latin.
 
 df = pd.read_csv('./cw10dane/Pokemon.csv', index_col=0, encoding='latin')
-print(df.head())
+print(df.head(4))
 
 #2. Zgrupuj dane na podstawie wartości kolumny Type 1 następnie oblicz średnią dla wartość kolumny Defense dla każdej grupy.
 
 srednia = df.groupby('Type 1')['Defense'].mean()
 print(srednia.head())
-
 
 #3. Utwórz nową kolumnę o nazwie Średnia obrona wg. Typu 1, gdzie dla każdego pokemona umieścisz obliczoną wcześniej średnią wartość obrony dla typu 1 (uwzględniając typ pokemona).
 
@@ -48,6 +47,7 @@ print(rows)
 #8. Zapisz zmodyfikowany Data Frame do nowego pliku modified_pokemon.csv.
 df3.to_csv('modified_pokemon.csv')
 
+
 #WYKRESY
 #1. Na jednym płótnie (figure) wyświetl 4 różne wykresy (w dwóch rzędach i dwóch kolumnach). Ustaw wielkość płótna na (14,10).
 plt.figure(figsize=(14,10))
@@ -66,7 +66,7 @@ plt.subplot(2,2,2)
 
 df2 = df.groupby('Type 1')['Type 1'].count()
 
-plt.pie(df2, autopct='%1.1f%%',pctdistance=0.7 ,labels=df2.index)
+plt.pie(df2, autopct='%1.1f%%', pctdistance=0.7 ,labels=df2.index)
 
 plt.legend(df2.index, loc='upper left', bbox_to_anchor=(1.15, 1))
 
@@ -85,7 +85,7 @@ sns.scatterplot(data= df4, x = x1, y = x2, hue='Type 1')
 
 plt.subplot(2,2,4)
 color = ['Red', 'Green', 'Blue']
-sns.boxplot(data= df4, x='Type 1', y='Speed',palette='bright', hue='Type 1')
+sns.boxplot(data= df4, x='Type 1', y='Speed', palette='bright', hue='Type 1')
 
 #7. Dla zwiększenia czytelności wykresów, do każdego dodaj opisy osi oraz tytuły wykresów.
 
@@ -107,6 +107,6 @@ plt.ylabel('Wartość')
 plt.title('Mediana prędkości dla 3 typów pokemonów')
 
 #8. Zapisz wykres do pliku .png.
-plt.tight_layout()
 plt.savefig('./WykresZadanie.png')
+
 plt.show()
